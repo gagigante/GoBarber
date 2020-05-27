@@ -1,50 +1,53 @@
-import { startOfHour, isBefore, getHours } from 'date-fns';
-
+import { startOfHour, isBefore, getHours, format } from 'date-fns';
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
-import Appointment from '../infra/typeorm/entities/Appointment';
 
-import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
+import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment';
+import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 
-interface IRequestDTO {
+interface IRequest {
   provider_id: string;
   user_id: string;
   date: Date;
 }
-
 @injectable()
 class CreateAppointmentService {
+  private appointmentsRepository: IAppointmentsRepository;
+
   constructor(
     @inject('AppointmentsRepository')
-    private appointmentsRepository: IAppointmentsRepository,
-  ) {}
+    appointmentsRepository: IAppointmentsRepository,
+  ) {
+    this.appointmentsRepository = appointmentsRepository;
+  }
 
   public async execute({
     provider_id,
     user_id,
     date,
-  }: IRequestDTO): Promise<Appointment> {
+  }: IRequest): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
 
-    const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
-      appointmentDate,
-    );
-
-    if (findAppointmentInSameDate) {
-      throw new AppError('This appointment is already booked');
+    if (isBefore(appointmentDate, Date.now())) {
+      throw new AppError("You can't book appointments in past dates");
     }
 
     if (provider_id === user_id) {
       throw new AppError("You can't book appointments with yourself");
     }
 
-    if (isBefore(appointmentDate, Date.now())) {
-      throw new AppError("You can't book appointments in past dates");
-    }
-
     if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
       throw new AppError("You can't book appointments outside commercial time");
+    }
+
+    const findAppointmentInSameDate = await this.appointmentsRepository.findByDate(
+      appointmentDate,
+      provider_id,
+    );
+
+    if (findAppointmentInSameDate) {
+      throw new AppError('This appointment is already booked');
     }
 
     const appointment = await this.appointmentsRepository.create({
