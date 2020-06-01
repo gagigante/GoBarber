@@ -14,7 +14,7 @@ const userAvatarController = new UserAvatarController();
 // http://localhost:3333/users
 const usersRouter = Router();
 
-const upload = multer(uploadConfig);
+const upload = multer(uploadConfig.multer);
 
 usersRouter.post(
   '/',
