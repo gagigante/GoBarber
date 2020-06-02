@@ -32,7 +32,6 @@ export default function ensureAuthenticated(
     req.user = {
       id: sub,
     };
-    console.log(decoded);
 
     return next();
   } catch {
