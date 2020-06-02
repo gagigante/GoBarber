@@ -42,11 +42,9 @@ class CreateUserService {
       password: hashedPassword,
     });
 
-    await this.usersRepository.save(user);
+    // await this.usersRepository.save(user);
 
     await this.cacheProvider.invalidadePrefix('providers-list');
-
-    console.log('passou');
 
     return user;
   }
