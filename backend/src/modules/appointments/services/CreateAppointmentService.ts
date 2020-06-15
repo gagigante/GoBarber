@@ -69,7 +69,7 @@ class CreateAppointmentService {
     });
 
     await this.cacheProvider.invalidade(
-      `provider_appointments:${provider_id}:${format(
+      `provider-appointments:${provider_id}:${format(
         appointmentDate,
         'yyyy-M-d',
       )}`,
