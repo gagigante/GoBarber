@@ -1,3 +1,5 @@
 backend/node_modules
 web/node_modules
 mobile/node_modules
+
+web/coverage
