@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
-import { Platform } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { Platform } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -13,29 +13,27 @@ export const Title = styled.Text`
   font-size: 24px;
   color: #f4ede8;
   font-family: 'RobotoSlab-Medium';
-  margin: 42px 0 18px;
+  margin: 64px 0 24px;
 `;
 
-export const BackToSignInButton = styled.TouchableWithoutFeedback`
+export const BackToSignIn = styled.TouchableOpacity`
   position: absolute;
   left: 0;
   bottom: 0;
   right: 0;
-`;
-
-export const BackToSignInButtonContent = styled.View`
   background: #312e38;
   border-top-width: 1px;
   border-color: #232129;
   padding: 16px 0 ${16 + getBottomSpace()}px;
-  flex-direction: row;
+
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 `;
 
-export const BackToSignInButtonText = styled.Text`
-  color: #ff9000;
+export const BackToSignInText = styled.Text`
+  color: #fff;
   font-size: 18px;
-  font-family: 'RobotoSLab- Medium';
+  font-family: 'RobotoSlab-Regular';
   margin-left: 16px;
 `;

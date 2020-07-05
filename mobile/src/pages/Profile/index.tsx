@@ -50,7 +50,7 @@ const Profile: React.FC = () => {
 
   const navigation = useNavigation();
 
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
 
   const handleUpdateProfile = useCallback(
     async (data: ProfileFormData) => {
@@ -173,10 +173,7 @@ const Profile: React.FC = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       enabled
     >
-      <ScrollView
-        contentContainerStyle={{ flex: 1 }}
-        keyboardShouldPersistTaps="handled"
-      >
+      <ScrollView keyboardShouldPersistTaps="handled">
         <Container>
           <BackButton onPress={handleGoBack}>
             <Icon name="chevron-left" size={24} color="#999591" />
@@ -262,6 +259,10 @@ const Profile: React.FC = () => {
               }}
             >
               Confirmar mudanças
+            </Button>
+
+            <Button style={{ backgroundColor: '#c53030' }} onPress={signOut}>
+              Logout
             </Button>
           </Form>
         </Container>

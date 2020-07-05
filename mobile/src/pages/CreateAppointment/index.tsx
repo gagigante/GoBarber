@@ -178,6 +178,7 @@ const CreateAppointment: React.FC = () => {
           <ProvidersList
             data={providers}
             keyExtractor={(provider) => provider.id}
+            contentContainerStyle={{ paddingLeft: 8, paddingRight: 16 }}
             renderItem={({ item: provider }) => (
               <ProviderContainer
                 onPress={() => handleSelectProvider(provider.id)}

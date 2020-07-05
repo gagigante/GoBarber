@@ -62,14 +62,14 @@ export const Content = styled.ScrollView``;
 export const ProvidersListContainer = styled.View``;
 
 export const ProvidersList = styled(FlatList as new () => FlatList<Provider>)`
-  padding: 32px 24px;
+  padding: 32px 16px;
 `;
 
 export const ProviderContainer = styled(RectButton)<ProviderContainerProps>`
   background: ${(props) => (props.selected ? '#ff9000' : '#3e3b47')};
   flex-direction: row;
   align-items: center;
-  margin-right: 16px;
+  margin-right: 8px;
   padding: 8px 12px;
   border-radius: 10px;
 `;

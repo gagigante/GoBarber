@@ -31,7 +31,7 @@ import {
   ForgotPassword,
   ForgotPasswordText,
   CreateAccountButton,
-  CreateAccountButtonContent,
+  // CreateAccountButtonContent,
   CreateAccountButtonText,
 } from './styles';
 
@@ -154,10 +154,10 @@ const SignIn: React.FC = () => {
           navigation.navigate('SignUp');
         }}
       >
-        <CreateAccountButtonContent>
-          <Icon name="log-in" size={20} color="#ff9000" />
-          <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
-        </CreateAccountButtonContent>
+        {/* <CreateAccountButtonContent> */}
+        <Icon name="log-in" size={20} color="#ff9000" />
+        <CreateAccountButtonText>Criar uma conta</CreateAccountButtonText>
+        {/* </CreateAccountButtonContent> */}
       </CreateAccountButton>
     </>
   );
