@@ -1,9 +1,9 @@
 import { injectable, inject } from 'tsyringe';
 import { getDaysInMonth, getDate, isAfter } from 'date-fns';
 
-import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
+import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 
-interface IRequestDTO {
+interface IRequest {
   provider_id: string;
   month: number;
   year: number;
@@ -25,7 +25,7 @@ class ListProviderMonthAvailabilityService {
     provider_id,
     month,
     year,
-  }: IRequestDTO): Promise<IResponse> {
+  }: IRequest): Promise<IResponse> {
     const appointments = await this.appointmentsRepository.findAllInMonthFromProvider(
       {
         provider_id,
