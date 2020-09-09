@@ -1,3 +1,5 @@
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=GoBarber%20Api&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fgagigante%2FGoBarber%2Fmaster%2F.github%2FInsomnia_Gobarber.json)
+
 # Recuperação de senha
 
 **RF**
