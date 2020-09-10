@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="GoBarber" title="#GoBarber" src=".github/logo.svg" width="150px" />
+  <img alt="GoBarber" title="#GoBarber" src=".github/logo.png" width="150px" />
 </h1>
 
 <h4 align="center">
@@ -50,25 +50,17 @@ Software to facilitate the scheduling and organization of barbershops
 
 ## :runner: How to run
 
-<br>
-
 ### Backend
 
 > To run the backend follow the steps in [BACKEND README](./backend/README.md)
-
-<br>
 
 ### Web
 
 > To run the web app follow the steps in [WEB README](./web/README.md)
 
-<br>
-
 ### Mobile
 
 > To run the mobile app follow the steps in [MOBILE README](./mobile/README.md)
-
-<br>
 
 ## 🤔 How to contribute
 
