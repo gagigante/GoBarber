@@ -20,6 +20,8 @@ import {
 } from './styles';
 
 import logoImage from '../../assets/logo.svg';
+import avatarPlaceholder from '../../assets/avatar-placeholder.png';
+
 import { useAuth } from '../../hooks/Auth';
 import api from '../../services/apiClient';
 
@@ -141,7 +143,7 @@ const Dashboard: React.FC = () => {
           <img src={logoImage} alt="GoBarber" />
 
           <Profile>
-            <img src={user.avatar_url} alt={user.name} />
+            <img src={user.avatar_url || avatarPlaceholder} alt={user.name} />
             <div>
               <span>Bem vindo</span>
               <Link to="profile">
@@ -171,7 +173,7 @@ const Dashboard: React.FC = () => {
 
               <div>
                 <img
-                  src={nextAppointment.user.avatar_url}
+                  src={nextAppointment.user.avatar_url || avatarPlaceholder}
                   alt={nextAppointment.user.name}
                 />
 
@@ -200,7 +202,7 @@ const Dashboard: React.FC = () => {
 
                 <div>
                   <img
-                    src={appointment.user.avatar_url}
+                    src={appointment.user.avatar_url || avatarPlaceholder}
                     alt={appointment.user.name}
                   />
 
