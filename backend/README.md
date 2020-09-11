@@ -61,13 +61,9 @@ To create PostgreSQL, Mongo and Redis instance using Docker
 ```
   # POSTGRESQL
 
-  $ docker run --name gobarber-postgres
-  -e POSTGRES_USER=docker \
-  -e POSTGRES_DB=gobarber
-  -e POSTGRES_PASSWORD=docker \
-  -p 5432:5432
-  -d postgres
-
+  $ docker run --name gobarber-postgres -e POSTGRES_USER=docker \
+              -e POSTGRES_DB=gobarber -e POSTGRES_PASSWORD=docker \
+              -p 5432:5432 -d postgres
 
   # MONGO
 
@@ -112,6 +108,15 @@ REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_PASS=
 
+```
+
+And then, run the migrations
+```
+  $ yarn typeorm migration:run
+
+  # or
+
+  $ npm typeorm migration:run
 ```
 
 Finally, start the server

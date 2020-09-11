@@ -56,7 +56,7 @@ Software to facilitate the scheduling and organization of barbershops
 
 ### Web
 
-> To run the web app follow the steps in [WEB README](.https://github.com/gagigante/GoBarber/blob/master/web/README.md)
+> To run the web app follow the steps in [WEB README](https://github.com/gagigante/GoBarber/blob/master/web/README.md)
 
 ### Mobile
 

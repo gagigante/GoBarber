@@ -4,3 +4,4 @@ mobile/node_modules
 
 web/coverage
 mobile/coverage
+web/.env
