@@ -46,6 +46,7 @@ Rest api that provides data to the web and mobile client
 - NPM or Yarn
 - PostgreSQL
 - MongoDB
+- Redis
 
 - (Optional) Docker
 
