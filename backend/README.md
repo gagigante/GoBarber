@@ -1,71 +1,126 @@
+<h1 align="center">
+  <img alt="GoBarber" title="#GoBarber" src="../.github/logo.png" width="150px" />
+</h1>
+
+<h4 align="center">
+  GoBarber API
+</h4>
+
+<p align="center">
+  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#runner-how-to-run">How to run</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#computer-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+</>
+
+<br>
+
+## :rocket: Technologies
+
+This project was developed with the following techs:
+
+- [Node](https://nodejs.org/en/)
+- [Express](https://expressjs.com/)
+- [Typescript](https://www.typescriptlang.org/)
+- [TypeORM](https://typeorm.io/)
+- [Tsyringe](https://github.com/microsoft/tsyringe)
+- [PostgreSQL](https://www.postgresql.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [Redis](https://redis.io/)
+- [JWT](https://jwt.io/)
+- [Multer](https://www.npmjs.com/package/multer)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
+- [Class transformer](https://github.com/typestack/class-transformer)
+- [AWS SES](https://aws.amazon.com/pt/ses/)
+- [AWS S3](https://aws.amazon.com/pt/s3/)
+
+
+## :computer: Project
+
+Rest api that provides data to the web and mobile client
+
+## :runner: How to run
+
+> ### Requirements
+
+- Node
+- NPM or Yarn
+- PostgreSQL
+- MongoDB
+
+- (Optional) Docker
+
+<br>
+Api reference:
+<br>
+
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=GoBarber%20Api&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fgagigante%2FGoBarber%2Fmaster%2F.github%2FInsomnia_Gobarber.json)
 
-# Recuperação de senha
+<br>
 
-**RF**
+To create PostgreSQL, Mongo and Redis instance using Docker
+```
+  # POSTGRESQL
 
-- O usuário deve poder recuperar sua senha informando o seu e-mail
-- O usuário deve receber um e-mail com instruções de recuperação de senha
-- O usuário deve poder resetar sua senha
+  $ docker run --name gobarber-postgres
+  -e POSTGRES_USER=docker \
+  -e POSTGRES_DB=gobarber
+  -e POSTGRES_PASSWORD=docker \
+  -p 5432:5432
+  -d postgres
 
-**RNF**
 
-- Utilizar mail trap para testar o envio de e-mail em ambiente de desenvolvimento
-- Utilizar amazon SES para envio em produção
-- O envio de e-mails devem acontecer em segundo plano (background job)
+  # MONGO
 
-**RN**
+  $ docker run --name gobarber-mongodb -p 27017:27017 -d -t mongo
 
-- O link enviado por e-mail para resetar senha deve resetar em 2 horas
-- O usuário precisa confirmar a nova senha ao reseta-la
 
-# Atualização do perfil
+  # REDIS
 
-**RF**
+  $ docker run --name gobarber-redis -p 6379:6379 -d -t redis:alpine
+```
 
-- O usuário deve poder atualizar seu nome, email e senha
+The next step is install dependencies
+```
+  $ yarn
 
-**RN**
+  # or
 
-- O usuário não pode alterar seu e-mail para um e-mail já utilizado
-- Para atualizar sua senha o usuário deve informar a senha antiga
-- Para atualizar a sua senha, o usuário precisa confirmar a nova senha
+  $npm install
 
-# Painel do prestador
+```
 
-**RF**
+After that, create a file `.env` based in `.env.example`
+```
+# It could be a simple MD5 hash
+APP_SECRET=YOUR_HASH
 
-- O usuário deve poder listar seus agendamentos de um dia específico
-- O prestador deve receber uma notificação sempre que houver uma notificação
-- O prestador deve visualizar as notificações não lidas
+APP_API_URL=http://YOUR_CURRENT_IP_ADDRESS:3333
+APP_WEB_URL=http://localhost:3000
 
-**RNF**
+# Mail implementation | ethereal or ses
+MAIL_DRIVER=ethereal
 
-- Os agendamento do prestador no dia devem ser armazenados em cache
-- As notificações do prestador devem ser armazenadas no mongodb
-- As notificações do prestador devem ser enviadas em tempo real utilizando socket.io
+# Storage implementation | disk or s3
+STORAGE_DRIVER=disk
 
-**RN**
+# Required if you are going to use ses and/or s3
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
 
-- A notificação deve ter um status de lida ou não lida
+# Redis
+REDIS_HOST=localhost
+REDIS_PORT=6379
+REDIS_PASS=
 
-# Agendamento de serviços
+```
 
-**RF**
+Finally, start the server
+```
+  $ yarn dev:server
 
-- O usuário deve poder listar todos os prestadores cadastrados
-- O usuário deve poder listar os dias de um mês com pelo menos um horário disponível de um prestador
-- O usuário deve poder listar horários disponíveis em um dia específico de um prestador
-- O usuário deve poder realizar um novo agendamento com um prestador
+  # or
 
-**RNF**
+  $ npm dev:server
+```
 
-- A listagem de prestadores deve ser armazenada em cache
-
-**RN**
-
-- Cada agendamento deve durar 1h exatamente
-- Os agendamentos devem estar disponíveis entre 8h às 18h (Primeiro às 8h; último 18h)
-- O usuário não pode agendar em um horário já agendado
-- O usuário não pode agendar em um horário passado
-- O usuário não pode agendar serviços consigo mesmo
+---
