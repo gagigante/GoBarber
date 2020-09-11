@@ -52,15 +52,15 @@ Software to facilitate the scheduling and organization of barbershops
 
 ### Backend
 
-> To run the backend follow the steps in [BACKEND README](./backend/README.md)
+> To run the backend follow the steps in [BACKEND README](https://github.com/gagigante/GoBarber/blob/master/backend/README.md)
 
 ### Web
 
-> To run the web app follow the steps in [WEB README](./web/README.md)
+> To run the web app follow the steps in [WEB README](.https://github.com/gagigante/GoBarber/blob/master/web/README.md)
 
 ### Mobile
 
-> To run the mobile app follow the steps in [MOBILE README](./mobile/README.md)
+> To run the mobile app follow the steps in [MOBILE README](https://github.com/gagigante/GoBarber/blob/master/mobile/README.md)
 
 ## 🤔 How to contribute
 
