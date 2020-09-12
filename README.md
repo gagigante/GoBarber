@@ -31,8 +31,8 @@
 <br>
 
 <p align="center">
-  <img alt="Web" src=".github/web.gif" height="400px">
-  <img alt="Mobile" src=".github/mobile.gif" height="400px">
+  <img alt="Web" src=".github/web.gif" width="73%">
+  <img alt="Mobile" src=".github/mobile.gif" width="25%">
 </p>
 
 ## :rocket: Technologies
