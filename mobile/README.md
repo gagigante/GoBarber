@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-  GoBarber WEB
+  GoBarber Mobile
 </h4>
 
 <p align="center">
@@ -15,7 +15,7 @@
 <br>
 
 <p align="center">
-  <img alt="Web" src="../.github/web.gif">
+  <img alt="Mobile" src="../.github/mobile.gif" width="350px">
 </p>
 
 <br>
@@ -24,9 +24,9 @@
 
 This project was developed with the following techs:
 
-- [React](https://reactjs.org)
-- [React Router Dom](https://reactrouter.com/web/guides/quick-start)
-- [React Spring](https://www.react-spring.io/)
+- [React Native](https://reactnative.dev/)
+- [React Navigation](https://reactnavigation.org/)
+- [Async Storage](https://github.com/react-native-community/async-storage)
 - [Styled Components](https://styled-components.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Eslint](https://eslint.org/)
@@ -37,7 +37,7 @@ This project was developed with the following techs:
 
 ## :computer: Project
 
-Web client to organize barbershops schedules
+Mobile client to schedule an appointment on a barbershop
 
 ## :runner: How to run
 
@@ -56,16 +56,50 @@ Install dependencies
 
 ```
 
-After that, create a file `.env` based in `.env.example`
+Edit `./src/services/api.ts` with your current IP address
 ```
-REACT_APP_API_URL=http://localhost:3333
+  const api = axios.create({
+    baseURL: 'http://192.168.0.105:3333',
+  });
 ```
 
-Finally, Start the server
+Install and run on Android
 ```
+  $ yarn android
+
+  # and
+
   $ yarn start
 
   # or
+
+  $ npm android
+
+  # and
+
+  $ npm start
+```
+
+Install and run on IOS
+```
+
+  $ cd ./ios
+
+  $ pod install
+
+  # Go back to previously directory and then run
+
+  $ yarn ios
+
+  # and
+
+  $ yarn start
+
+  # or
+
+  $ npm ios
+
+  # and
 
   $ npm start
 ```

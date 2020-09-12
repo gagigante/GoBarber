@@ -35,6 +35,8 @@ import {
   CreateAppointmentButtonText,
 } from './styles';
 
+import avatarPlaceholder from '../../assets/avatar-placeholder.png';
+
 interface RouteParams {
   providerId: string;
 }
@@ -52,7 +54,7 @@ interface AvailabilityItem {
 
 const CreateAppointment: React.FC = () => {
   const { user } = useAuth();
-  const { goBack, navigate, reset } = useNavigation();
+  const { goBack, reset } = useNavigation();
   const route = useRoute();
 
   const [availability, setAvailability] = useState<AvailabilityItem[]>([]);
@@ -170,7 +172,11 @@ const CreateAppointment: React.FC = () => {
 
         <HeaderTitle>Cabeleireiros</HeaderTitle>
 
-        <UserAvatar source={{ uri: user.avatar_url }} />
+        <UserAvatar
+          source={
+            user.avatar_url ? { uri: user.avatar_url } : avatarPlaceholder
+          }
+        />
       </Header>
 
       <Content>
@@ -184,7 +190,13 @@ const CreateAppointment: React.FC = () => {
                 onPress={() => handleSelectProvider(provider.id)}
                 selected={provider.id === selectedProvider}
               >
-                <ProviderAvatar source={{ uri: provider.avatar_url }} />
+                <ProviderAvatar
+                  source={
+                    provider.avatar_url
+                      ? { uri: provider.avatar_url }
+                      : avatarPlaceholder
+                  }
+                />
                 <ProviderName selected={provider.id === selectedProvider}>
                   {provider.name}
                 </ProviderName>
